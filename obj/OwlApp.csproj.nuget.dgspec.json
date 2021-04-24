@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\XiaomiPRO\\Documents\\Dev env\\OwlApp\\OwlApp.csproj": {}
+    "/Users/victor.cernetchi/source/repos/github/OWL/OwlApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\XiaomiPRO\\Documents\\Dev env\\OwlApp\\OwlApp.csproj": {
+    "/Users/victor.cernetchi/source/repos/github/OWL/OwlApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\XiaomiPRO\\Documents\\Dev env\\OwlApp\\OwlApp.csproj",
+        "projectUniqueName": "/Users/victor.cernetchi/source/repos/github/OWL/OwlApp.csproj",
         "projectName": "OwlApp",
-        "projectPath": "C:\\Users\\XiaomiPRO\\Documents\\Dev env\\OwlApp\\OwlApp.csproj",
-        "packagesPath": "C:\\Users\\XiaomiPRO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\XiaomiPRO\\Documents\\Dev env\\OwlApp\\obj\\",
+        "projectPath": "/Users/victor.cernetchi/source/repos/github/OWL/OwlApp.csproj",
+        "packagesPath": "/Users/victor.cernetchi/.nuget/packages/",
+        "outputPath": "/Users/victor.cernetchi/source/repos/github/OWL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\XiaomiPRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/victor.cernetchi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }
