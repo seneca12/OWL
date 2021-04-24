@@ -17,10 +17,12 @@ namespace OwlApp.Pages.Rate
         
         public async Task OnGetAsync()
         {
-            Exchange = await _exchangeService.GetExchangeRates("USD", new[]
+            Exchange = await _exchangeService.GetExchangeRates("EUR", new[]
             {
                 "EUR",
-                "GBP"
+                "GBP",
+                "USD",
+                "JPY"
             });
         }
     }

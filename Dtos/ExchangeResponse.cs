@@ -9,7 +9,8 @@ namespace OwlApp.Dtos
         public string Timestamp { get; set; }
         public string Base { get; set; }
         public DateTime Date { get; set; }
-        public IEnumerable<RateDto> Rates { get; set; }
+        // public List<RateDto> Rates { get; set; }
+        public Dictionary<string, string> Rates { get; set; }
         public ExchangeError Error { get; set; }
     }
 }

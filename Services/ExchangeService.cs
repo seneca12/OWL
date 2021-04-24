@@ -14,7 +14,7 @@ namespace OwlApp.Services
     public class ExchangeService: IExchangeService
     {
         private readonly IConfiguration _configuration;
-        private const string ApiEndpoint = "https://api.exchangeratesapi.io/v1/latest";
+        private const string ApiEndpoint = "http://api.exchangeratesapi.io/v1/latest";
         private readonly string _accessKey;
         private readonly HttpClient _client;
         
