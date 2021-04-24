@@ -1,0 +1,21 @@
+@page
+@model OwlApp.Pages.Rate.List
+
+@{
+    ViewData["Title"] = "Rate List";
+}
+
+<h1>Rate list</h1>
+
+<p>
+    @Model.Exchange.Base
+</p>
+
+
+<p>
+    @Model.Exchange.Date
+</p>
+
+<p>
+    @Model.Exchange.Rates.Count().ToString()
+</p>
