@@ -15,5 +15,6 @@ namespace OwlApp.Data
         }
 
         public DbSet<OwlApp.Models.Asset> Asset { get; set; }
+        public DbSet<ExchangeRate> ExchangeRates { get; set; }
     }
 }

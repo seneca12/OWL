@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OwlApp.Data;
 
 namespace OwlApp.Migrations
 {
     [DbContext(typeof(OwlAppContext))]
-    partial class OwlAppContextModelSnapshot : ModelSnapshot
+    [Migration("20210424195815_Create_ExchangeRateTable")]
+    partial class Create_ExchangeRateTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
