@@ -10,7 +10,7 @@ namespace OwlApp.Dtos
         public string Base { get; set; }
         public DateTime Date { get; set; }
         // public List<RateDto> Rates { get; set; }
-        public Dictionary<string, string> Rates { get; set; }
+        public Dictionary<string, decimal> Rates { get; set; }
         public ExchangeError Error { get; set; }
     }
 }

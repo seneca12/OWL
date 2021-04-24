@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/victor.cernetchi/.dotnet/store/|arch|/|tfm|",
-      "/Users/victor.cernetchi/.nuget/packages"
+      "C:\\Users\\XiaomiPRO\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\XiaomiPRO\\.nuget\\packages"
     ]
   }
 }
