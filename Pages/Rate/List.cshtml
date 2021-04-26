@@ -7,15 +7,83 @@
 
 <h1>Rate list</h1>
 
-<p>
-    @Model.Exchange.Base
-</p>
+<form method="post">
+    <div>
+        <button type="submit" asp-page-handler="RefreshSymbols">Refresh symbols</button>
+    </div>
+    <div>
+        <button type="submit" asp-page-handler="RefreshRates">Refresh rates</button>
+    </div>
+    <div>
+        <button type="submit" asp-page-handler="ExportRates">Export Rates</button>
+    </div>
+</form>
 
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Currencies[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Currencies[0].Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Currencies[0].Code)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Currencies) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enabled)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
 
-<p>
-    @Model.Exchange.Date
-</p>
-
-<p>
-    @Model.Exchange.Rates.Count().ToString()
-</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rates[0].Base)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rates[0].TargetCurrencyCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rates[0].Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rates[0].Date)
+        </th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Rates) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Base)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetCurrencyCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

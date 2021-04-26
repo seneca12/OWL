@@ -7,5 +7,6 @@ namespace OwlApp.Interfaces
     public interface IExchangeService
     {
         public Task<ExchangeResponse> GetExchangeRates(string baseRate, IEnumerable<string> toRates);
+        public Task<ExchangeSymbolsResponse> GetExchangeSymbols();
     }
 }

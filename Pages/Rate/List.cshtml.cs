@@ -1,10 +1,15 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using OwlApp.Data;
-using OwlApp.Dtos;
 using OwlApp.Interfaces;
 using OwlApp.Models;
+using OwlApp.Services;
 
 namespace OwlApp.Pages.Rate
 {
@@ -13,7 +18,8 @@ namespace OwlApp.Pages.Rate
         private readonly IExchangeService _exchangeService;
         private readonly OwlAppContext context;
 
-        public ExchangeResponse Exchange { get; set; }
+        public List<Currency> Currencies = new List<Currency>();
+        public List<ExchangeRate> Rates = new List<ExchangeRate>();
 
         public List(IExchangeService exchangeService, OwlAppContext context)
         {
@@ -23,28 +29,72 @@ namespace OwlApp.Pages.Rate
         
         public async Task OnGetAsync()
         {
-            Exchange = await _exchangeService.GetExchangeRates("EUR", new[]
-            {
-                "EUR",
-                "GBP",
-                "USD",
-                "JPY"
-            });
+            await RefreshData();
+        }
 
-            var rates = Exchange.Rates.Select(r =>
+        private async Task RefreshData()
+        {
+            Rates = await context.ExchangeRates.AsQueryable()
+                .ToListAsync();
+
+            Currencies = await context.Currencies.AsQueryable()
+                .ToListAsync();
+        }
+
+        public async Task OnPostRefreshRatesAsync()
+        {
+            var exchange = await _exchangeService.GetExchangeRates("EUR",
+                context.Currencies
+                    .Where(x => x.Enabled)
+                    .Select(x => x.Code)
+                    .ToArray()); 
+
+            var rates = exchange.Rates.Select(r =>
             {
+                var (key, value) = r;
                 var x = new ExchangeRate
                 {
-                    Base = Exchange.Base,
-                    Date = Exchange.Date,
-                    TargetCurrencyCode = r.Key,
-                    Rate = r.Value
+                    Base = exchange.Base,
+                    Date = exchange.Date,
+                    TargetCurrencyCode = key,
+                    Rate = value
                 };
 
                 return x;
             });
 
-            context.AddRange(rates);
+            await context.AddRangeAsync(rates);
+            await context.SaveChangesAsync();
+            await RefreshData();
+        }
+
+        public async Task OnPostRefreshSymbolsAsync()
+        {
+            var symbols = await _exchangeService.GetExchangeSymbols();
+
+            if (!symbols.Success)
+            {
+                throw new Exception(symbols.Error?.Info);
+            }
+
+            var currencies = symbols.Symbols.Select(c => new Currency
+            {
+                Name = c.Value,
+                Code = c.Key,
+                Enabled = false
+            });
+            
+            await context.AddRangeAsync(currencies);
+            await context.SaveChangesAsync();
+            await RefreshData();
+        }
+
+        public async Task<FileContentResult> OnPostExportRatesAsync()
+        {
+            var csvContent = (await context.ExchangeRates
+                    .ToListAsync()).RatesToCsv();
+            
+            return File(Encoding.UTF8.GetBytes(csvContent), "text/csv", $"rates-{DateTime.Today}.csv");
         }
     }
 }

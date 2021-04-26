@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OwlApp.Models;
 
 namespace OwlApp.Data
@@ -14,7 +10,8 @@ namespace OwlApp.Data
         {
         }
 
-        public DbSet<OwlApp.Models.Asset> Asset { get; set; }
+        public DbSet<Asset> Asset { get; set; }
         public DbSet<ExchangeRate> ExchangeRates { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
     }
 }
