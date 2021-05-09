@@ -7,83 +7,94 @@
 
 <h1>Rate list</h1>
 
-<form method="post">
-    <div>
-        <button type="submit" asp-page-handler="RefreshSymbols">Refresh symbols</button>
-    </div>
-    <div>
-        <button type="submit" asp-page-handler="RefreshRates">Refresh rates</button>
-    </div>
-    <div>
-        <button type="submit" asp-page-handler="ExportRates">Export Rates</button>
-    </div>
-</form>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Currencies[0].Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Currencies[0].Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Currencies[0].Code)
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model.Currencies) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Enabled)
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Rates[0].Base)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rates[0].TargetCurrencyCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rates[0].Rate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rates[0].Date)
-        </th>
-        
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model.Rates) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Base)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TargetCurrencyCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <form method="post">
+            <div class="col">
+                <button type="submit" asp-page-handler="RefreshSymbols">Refresh symbols</button>
+            </div>
+            <div class="col">
+                <button type="submit" asp-page-handler="RefreshRates">Refresh rates</button>
+            </div>
+            <div class="col">
+                <button type="submit" asp-page-handler="ExportRates">Export Rates</button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Currencies[0].Name)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Currencies[0].Code)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Currencies[0].Code)
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Currencies)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Code)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Enabled)
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="col table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Rates[0].Base)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Rates[0].TargetCurrencyCode)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Rates[0].Rate)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Rates[0].Date)
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Rates)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Base)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TargetCurrencyCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
